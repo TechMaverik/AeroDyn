@@ -1,7 +1,7 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-uint8_t receiverMAC[] = {0x24, 0x6F, 0x28, 0xAA, 0xBB, 0xCC}; 
+uint8_t receiverMAC[] = {0x68,0x25,0xDD,0x31,0xB2,0xEC}; 
 // CHANGE THIS TO MAC OF ESP32-B !!
 
 void OnSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
