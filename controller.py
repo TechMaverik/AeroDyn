@@ -1,21 +1,39 @@
 import inputs
 import requests
 
-IP = "10.120.3.194"
+
+def quick_left():
+    url = "http://10.120.3.178/quick_left"
+    requests.get(url)
+
+
+def quick_right():
+    url = "http://10.120.3.178/quick_right"
+    requests.get(url)
 
 
 def left():
-    url = "http://10.120.3.194/left"
+    url = "http://10.120.3.178/left"
     requests.get(url)
 
 
 def right():
-    url = "http://10.120.3.194/right"
+    url = "http://10.120.3.178/right"
+    requests.get(url)
+
+
+def front():
+    url = "http://10.120.3.178/front"
+    requests.get(url)
+
+
+def back():
+    url = "http://10.120.3.178/back"
     requests.get(url)
 
 
 def stop():
-    url = "http://10.120.3.194/stop"
+    url = "http://10.120.3.178/stop"
     requests.get(url)
 
 
@@ -27,14 +45,18 @@ if len(pad):
 
             if event.ev_type == "Key" and event.code == "BTN_START":
                 print("START", event.state)  # back
+                quick_left()
             if event.ev_type == "Key" and event.code == "BTN_SELECT":
                 print("SELECT", event.state)  # start
+                quick_right()
+
             if event.ev_type == "Key" and event.code == "BTN_THUMBL":
                 print("THUMBL", event.state)  # left joystick btn
             if event.ev_type == "Key" and event.code == "BTN_THUMBR":
                 print("THUMBR", event.state)  # right joystick btn
             if event.ev_type == "Key" and event.code == "BTN_EAST":
                 print("B", event.state)  # B
+                back()
             if event.ev_type == "Key" and event.code == "BTN_NORTH":
                 print("Y", event.state)  # Y
             if event.ev_type == "Key" and event.code == "BTN_WEST":

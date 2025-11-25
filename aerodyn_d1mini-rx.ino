@@ -21,7 +21,17 @@ void front()
     digitalWrite(M1, HIGH);
     digitalWrite(M2, LOW);
     digitalWrite(M3, HIGH);
-    digitalWrite(M4, LOW);  
+    digitalWrite(M4, LOW);
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine front\"}");  
+}
+
+void back()
+{
+    digitalWrite(M1, LOW);
+    digitalWrite(M2, HIGH);
+    digitalWrite(M3, LOW);
+    digitalWrite(M4, HIGH);
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine front\"}");  
 }
 
 void stop()
@@ -30,6 +40,17 @@ void stop()
     digitalWrite(M2, LOW);
     digitalWrite(M3, LOW);
     digitalWrite(M4, LOW);
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine stop\"}");
+}
+
+void quick_left()
+{
+  digitalWrite(M1, HIGH);
+  digitalWrite(M2, LOW);
+  digitalWrite(M3, LOW);
+  digitalWrite(M4, HIGH);
+  server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine quick left\"}");
+
 }
 
 void left()
@@ -37,6 +58,7 @@ void left()
 
     digitalWrite(M1, HIGH);
     digitalWrite(M2, LOW);
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine left\"}");
   
 }
 
@@ -44,6 +66,16 @@ void right()
 {
     digitalWrite(M3, HIGH);
     digitalWrite(M4, LOW);  
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine right\"}");
+}
+
+void quick_right()
+{
+    digitalWrite(M3, HIGH);
+    digitalWrite(M4, LOW);  
+    digitalWrite(M1, LOW);
+    digitalWrite(M2, HIGH);
+    server.send(200, "application/json", "{\"message\":\"AeroDyn Flying Machine right quick right\"}");
 }
 
 
@@ -101,7 +133,11 @@ void setup() {
   server.on("/right", HTTP_GET, right);
   server.on("/front", HTTP_GET, front);
   server.on("/stop", HTTP_GET, stop);
+  server.on("/back", HTTP_GET, back);
+  server.on("/quick_right", HTTP_GET, quick_right);
+  server.on("/quick_left", HTTP_GET, quick_left);
   server.on("/post", HTTP_POST, handlePostData);
+
 
   server.begin();
   Serial.println("API Server started!");
