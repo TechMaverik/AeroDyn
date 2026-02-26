@@ -21,9 +21,7 @@ def auto_generate_flight_commands():
         config.MSG_FORWARD,
         config.MSG_LEFT,
         config.MSG_RIGHT,
-        config.MSG_ASCEND,
         config.MSG_DESCEND,
-        config.MSG_STOP,
     ]
     gen_command = random.choice(commands)
     return gen_command
@@ -44,6 +42,12 @@ while True:
         time.sleep(0.5)
     elif keyboard.is_pressed("down"):
         ser.write(config.MSG_DESCEND)
+        time.sleep(2)
+        ser.write(config.MSG_DESCEND)
+        time.sleep(2)
+        ser.write(config.MSG_DESCEND)
+        time.sleep(2)
+        ser.write(config.MSG_DESCEND)
         print("MANUAL CONTROL → DESCEND")
         time.sleep(0.5)
     elif keyboard.is_pressed("space"):
@@ -57,7 +61,7 @@ while True:
             print(f"AERODYN AUTO PILOT: {gen_command.decode().strip()}")
             time.sleep(2)
             ser.write(config.MSG_STOP)
-            time.sleep(5)
+            time.sleep(2)
             if keyboard.is_pressed("esc"):
                 print("Exiting AERO DYN AUTO PILOT mode")
                 break

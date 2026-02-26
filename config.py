@@ -1,6 +1,6 @@
 """config.py"""
 
-SERIAL_PORT = "/dev/tty.usbserial-110"  # Update this to your serial port
+SERIAL_PORT = "/dev/cu.usbserial-1110"  # Update this to your serial port
 BAUD_RATE = 9600
 MSG_FORWARD = b"CMD_FORWARD\n"
 MSG_LEFT = b"CMD_LEFT\n"
